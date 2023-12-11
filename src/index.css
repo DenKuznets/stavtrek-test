@@ -8,4 +8,8 @@
         background-color: #1560ac;
         text-decoration: none;
     }
+
+    &:hover {
+        background-color: #1560ac;
+    }
 }

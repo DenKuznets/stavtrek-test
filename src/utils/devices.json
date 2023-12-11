@@ -1,0 +1,55 @@
+[
+    {
+        "id": 2,
+        "attributes": {},
+        "groupId": 0,
+        "calendarId": 0,
+        "name": "Тест",
+        "uniqueId": "550393",
+        "status": "offline",
+        "lastUpdate": "2023-11-27T13:47:46.000+00:00",
+        "positionId": 131758,
+        "phone": null,
+        "model": null,
+        "contact": null,
+        "category": null,
+        "disabled": false,
+        "expirationTime": null
+    },
+    {
+        "id": 9,
+        "attributes": {
+            "deviceImage": "device.webp"
+        },
+        "groupId": 0,
+        "calendarId": 0,
+        "name": "Монтажник тест ",
+        "uniqueId": "135079",
+        "status": "online",
+        "lastUpdate": "2023-12-11T11:09:49.000+00:00",
+        "positionId": 1563060,
+        "phone": null,
+        "model": null,
+        "contact": null,
+        "category": null,
+        "disabled": false,
+        "expirationTime": null
+    },
+    {
+        "id": 29,
+        "attributes": {},
+        "groupId": 0,
+        "calendarId": 0,
+        "name": "ФГ тест",
+        "uniqueId": "860103062791109",
+        "status": "online",
+        "lastUpdate": "2023-12-11T11:09:44.000+00:00",
+        "positionId": 1563052,
+        "phone": null,
+        "model": null,
+        "contact": null,
+        "category": null,
+        "disabled": false,
+        "expirationTime": null
+    }
+]
