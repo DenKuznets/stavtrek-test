@@ -4,19 +4,12 @@ import { useEffect, useState } from "react";
 import jsonData from "../../utils/devices.json";
 
 interface DeviceType {
-    [id: number]: JSONValue;
+    id: number;
     name: string;
     uniqueId: string;
     status: string;
     lastUpdate: string;
 }
-
-type JSONValue =
-    | string
-    | number
-    | boolean
-    | { [x: string]: JSONValue }
-    | Array<JSONValue>;
 
 const columns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 70 },
@@ -38,9 +31,9 @@ const columns: GridColDef[] = [
     },
 ];
 
-export default function DataTable() {
+export default function DataTable({ filter }: { filter: string }) {
     const [rows, setRows] = useState<null | DeviceType[]>();
-
+    console.log(filter);
     useEffect(() => {
         // getDevices();
         // console.log(jsonData);
@@ -55,14 +48,26 @@ export default function DataTable() {
                 };
             })
         );
-        return () => {};
     }, []);
+
+    // useEffect(() => {
+    //     if (filter) {
+    //         setFilteredRows((prev) => {
+    //             console.log(prev);
+    //             return prev?.filter((device) => device.id === filter);
+    //         });
+    //     }
+    // }, [filter]);
+
+    const rowsToShow = filter
+        ? rows?.filter((device) => device.id === parseInt(filter))
+        : rows;
 
     return (
         <div style={{ height: 400, width: "100%" }}>
-            {rows && (
+            {rowsToShow && (
                 <DataGrid
-                    rows={rows}
+                    rows={rowsToShow}
                     columns={columns}
                     initialState={{
                         pagination: {

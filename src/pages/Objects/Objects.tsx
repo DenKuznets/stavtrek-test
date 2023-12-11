@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchAppBar from "../../components/AppBar/SearchBar";
 import DataTable from "../../components/Table/Table";
 
 const Objects = () => {
+    const [filter, setFilter] = useState("");
     return (
         <div>
-            <SearchAppBar />
-            <DataTable />
+            <SearchAppBar setFilter={setFilter} />
+            <DataTable filter={filter} />
         </div>
     );
 };
