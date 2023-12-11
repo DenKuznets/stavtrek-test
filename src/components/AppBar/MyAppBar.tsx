@@ -5,15 +5,24 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-// import MenuIcon from "@mui/icons-material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-// import AdbIcon from "@mui/icons-material/Adb";
+import AdbIcon from "@mui/icons-material/Adb";
+import { NavLink, Link as RouterLink } from "react-router-dom";
+import Link from "@mui/material/Link";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = [
+    {
+        name: "Учетные записи",
+        link: "accounts",
+    },
+    { name: "Пользователи", link: "users" },
+    { name: "Объекты", link: "objects" },
+];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function MyAppBar() {
@@ -32,6 +41,7 @@ function MyAppBar() {
     };
 
     const handleCloseNavMenu = () => {
+        // console.log("handleCloseNavMenu");
         setAnchorElNav(null);
     };
 
@@ -43,9 +53,9 @@ function MyAppBar() {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    {/* <AdbIcon
+                    <AdbIcon
                         sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
-                    /> */}
+                    />
                     <Typography
                         variant="h6"
                         noWrap
@@ -78,7 +88,7 @@ function MyAppBar() {
                             onClick={handleOpenNavMenu}
                             color="inherit"
                         >
-                            {/* <MenuIcon /> */}
+                            <MenuIcon />
                         </IconButton>
                         <Menu
                             id="menu-appbar"
@@ -100,19 +110,24 @@ function MyAppBar() {
                         >
                             {pages.map((page) => (
                                 <MenuItem
-                                    key={page}
+                                    key={page.name}
                                     onClick={handleCloseNavMenu}
                                 >
                                     <Typography textAlign="center">
-                                        {page}
+                                        <Link
+                                            component={RouterLink}
+                                            to={page.link}
+                                        >
+                                            {page.name}
+                                        </Link>
                                     </Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
                     </Box>
-                    {/* <AdbIcon
+                    <AdbIcon
                         sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
-                    /> */}
+                    />
                     <Typography
                         variant="h5"
                         noWrap
@@ -135,16 +150,23 @@ function MyAppBar() {
                         sx={{
                             flexGrow: 1,
                             display: { xs: "none", md: "flex" },
+                            columnGap: 1,
                         }}
                     >
                         {pages.map((page) => (
-                            <Button
-                                key={page}
+                            <NavLink
+                                key={page.name}
+                                to={page.link}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: "white", display: "block" }}
+                                className={({ isActive, isPending }) =>
+                                    ` navlink
+                                ${isPending ? "pending" : ""}
+                                    ${isActive ? "active" : ""}
+                                    `
+                                }
                             >
-                                {page}
-                            </Button>
+                                {page.name}
+                            </NavLink>
                         ))}
                     </Box>
 

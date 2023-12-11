@@ -1,0 +1,11 @@
+.navlink {
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+
+    &.active {
+        cursor: default;
+        background-color: #1560ac;
+        text-decoration: none;
+    }
+}
